@@ -10,13 +10,15 @@ title: Microservices Architecture pattern
 
 ## Problem
 
-What's the application's deployment architecture?
+As a server-side application gets larger, it tends to get more complicated. Because all of the code is in the same application, it is easy for any module to couple itself to another one. Typically loose coupling between modules break down over time and the system becomes more difficult to maintain as a result.
 
 ## Forces
 
 {% include patterns/monolithic-microservice-shared-forces.html %}
 
 ## Solution
+
+It is simpler to maintain a project by splitting it apart into independent abstractions called services.
 
 Architect the application by applying the [Scale Cube](/articles/scalecube.html) (specifically y-axis scaling) and functionally decompose the application into a set of collaborating services.
 Each service implements a set of narrowly, related functions.
@@ -26,8 +28,8 @@ Services communicate using either synchronous protocols such as HTTP/REST or asy
 
 Services are developed and deployed independently of one another.
 
-Each service has its own database in order to be decoupled from other services.
-When necessary, consistency is between databases is maintained using either database replication mechanisms or application-level events.
+Each service has its own persistence layer in order to be decoupled from other services.
+When necessary, consistency between persistence layers are maintained using either database replication mechanisms or application-level events.
 
 ## Example
 
